@@ -1,0 +1,16 @@
+@import "bootstrap-icons";
+
+// Bootstrap functions, variables, mixins must come first
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Regular toastr styles
+@import "ngx-toastr/toastr";
+
+// Bootstrap 5 styled toastr (optional, if you want BS5 alert style)
+@import "ngx-toastr/toastr-bs5-alert";
+
+body{
+  height: 1000px;
+}

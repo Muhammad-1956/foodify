@@ -1,0 +1,17 @@
+<section class="categories my-3">
+  <p class="fw-bold h5 mb-3">Categories</p>
+
+  <div class="row g-3">
+    @for(category of categories(); track category.id){
+      <div class="col-6 col-md-4 col-xl-2">
+      <div class="card text-center p-2 pb-0">
+        <img [src]="category.image" class="card-img-top" alt="...">
+        <div class="card-body px-0 pt-3 d-flex align-items-end">
+          <button class="btn border bg-success text-white fw-bold w-100">{{category.name}}</button>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+

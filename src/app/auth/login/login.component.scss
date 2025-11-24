@@ -1,0 +1,16 @@
+.container{
+  font-family: 'Poppins';
+  form{
+    input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ccc !important; /* optional */
+  }
+  .danger{
+    color: #B52323;
+    &-light{
+      color: #B52323;
+    }
+  }
+  }
+}

@@ -1,0 +1,26 @@
+.container {
+  font-family: "Poppins";
+  form {
+    input:focus {
+      outline: none !important;
+      box-shadow: none !important;
+      border-color: #ccc !important; /* optional */
+
+    }
+  }
+}
+
+.otp-box {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+}
+@media screen and (max-width:767px){
+  .otp-box {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+}

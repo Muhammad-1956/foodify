@@ -1,0 +1,22 @@
+.content{
+  min-width: 350px;
+}
+@media screen and (min-width: 768px){
+.content{
+  border-radius: 10px;
+  p{
+    color: black;
+  }
+}
+
+}
+@media screen and (max-width: 767px){
+.content{
+  background-image: url('../../../assets/images/entry.png');
+  background-size: 100% 100%;
+  p{
+    color: white;
+  }
+}
+
+}

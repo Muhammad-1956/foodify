@@ -1,0 +1,19 @@
+.categories{
+  .card{
+    min-height: 263px;
+  }
+}
+@media screen and (max-width: 1199px){
+  .categories{
+  .card{
+    min-height: 363px;
+  }
+}
+}
+@media only screen and (max-width: 767px) {
+  .categories{
+  .card{
+    min-height: 311px;
+  }
+}
+}

@@ -1,0 +1,134 @@
+<nav class="navbar navbar-expand-lg bg-white shadow-sm py-2 sticky-top">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- LEFT: Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <!-- <img src="assets/logo.png" width="40" class="me-2" /> -->
+      <span class="fw-bold">Foodify</span>
+    </a>
+
+    <!-- CENTER: Search (hidden on small screens) -->
+    <form class="d-none d-lg-block w-50 mx-auto">
+      <input class="form-control rounded-pill text-block-50" type="search" placeholder="Search meals...">
+    </form>
+
+    <!-- RIGHT: Navs + icons -->
+    <ul class="navbar-nav d-flex flex-row align-items-center">
+
+      <!-- HIDE these on md & sm -->
+      <li class="nav-item mx-2 d-none d-lg-block">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active text-success fw-bold">Home</a>
+      </li>
+
+      <li class="nav-item mx-2 d-none d-lg-block">
+        <a class="nav-link" routerLink="/categories" routerLinkActive="active text-success fw-bold">Categories</a>
+      </li>
+
+      <li class="nav-item mx-2 d-none d-lg-block">
+        <a class="nav-link" routerLink="/favorite" routerLinkActive="active text-success fw-bold">Favorite</a>
+      </li>
+
+      <li class="nav-item mx-2 d-none d-lg-block">
+        <a class="nav-link" routerLink="/cart" routerLinkActive="active text-success fw-bold">Cart</a>
+      </li>
+
+<div class="d-flex gap-2 d-block d-lg-none">
+  <!-- Cart -->
+   <span class="nav-item flex-fill" (click)="togglePanel('cart')">
+       <span class="d-block fs-5"><i class="bi bi-bell"></i></span>
+    </span>
+
+   <!-- Profile -->
+   <span class="nav-item flex-fill" (click)="togglePanel('notif')">
+       <span class="d-block fs-5">🛒</span>
+    </span>
+
+</div>
+
+<!-- Cart Box -->
+<div class="small-box shadow" [class.show]="activePanel === 'cart'">
+  <h6>Cart</h6>
+  <p>Your cart items appear here.</p>
+</div>
+
+<!-- Notifications Box -->
+<div class="small-box shadow" [class.show]="activePanel === 'notif'">
+  <h6>Notifications</h6>
+  <p>Your notifications appear here.</p>
+</div>
+
+
+
+    </ul>
+  </div>
+</nav>
+
+
+
+<!-- Shows only in Medium and Mobile Screens -->
+<div class="search-wrapper d-block d-lg-none mt-4">
+  <div class="container">
+    <form class=" mx-auto p-2 border border-1 rounded shadow">
+      <div class="input-group">
+        <span class="input-group-text bg-white border-0">
+          🔍
+        </span>
+        <input
+        type="text"
+        class="form-control border-0"
+        placeholder="What Do You Want To Eat ?"
+        >
+      </div>
+    </form>
+      </div>
+    </div>
+
+    <nav class="mobile-bottom-nav d-lg-none bg-white py-2 shadow fixed-bottom">
+    <div class="container">
+      <div class="d-flex justify-content-between text-center">
+
+        <!-- Home -->
+        <a routerLink="/home" routerLinkActive="active text-success fw-bold span-success" class="nav-item flex-fill">
+          <div class="icon-text">
+            <span class="d-block fs-5">🏠</span>
+            <small class="">Home</small>
+          </div>
+        </a>
+
+        <!-- Categories -->
+        <a routerLink="/categories" routerLinkActive="active text-success fw-bold span-success" class="nav-item flex-fill">
+          <div class="icon-text">
+            <span class="d-block fs-5 ">📊</span>
+            <small class="">Categories</small>
+          </div>
+        </a>
+
+        <!-- Favorite -->
+        <a routerLink="/favorite" routerLinkActive="active text-success fw-bold span-success" class="nav-item flex-fill">
+          <div class="icon-text">
+            <span class="d-block fs-5">❤️</span>
+            <small class="">Favorite</small>
+          </div>
+        </a>
+
+        <!-- Cart -->
+        <a routerLink="/cart" routerLinkActive="active text-success fw-bold span-success" class="nav-item flex-fill">
+          <div class="icon-text">
+            <span class="d-block fs-5">🛒</span>
+            <small class="">Cart</small>
+          </div>
+        </a>
+
+        <!-- Profile -->
+        <a routerLink="/profile" routerLinkActive="active text-success fw-bold span-success" class="nav-item flex-fill">
+          <div class="icon-text">
+            <span class="d-block fs-5">👤</span>
+            <small class="">Profile</small>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+    <!-- Shows only in Medium and Mobile Screens/-->

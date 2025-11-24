@@ -1,0 +1,48 @@
+<!-- Top Green Curve -->
+<div class="container d-flex justify-content-center align-content-center">
+  <div class="content mt-5 w-75 border border-1 shadow rounded p-2 p-md-5">
+    <div class="top-curve text-start d-flex align-items-end">
+      <h3 class="fw-bold ms-2">Forget Password</h3>
+    </div>
+
+    <div class="container form-container">
+      <p class="text-md-center fw-semibold">
+        Please enter your phone number
+        to reset the password
+      </p>
+      <div class="card border-0 shadow-sm p-2 p-md-4 rounded-4">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+           <!-- Phone Number -->
+          <label class="fw-semibold mb-2">Phone Number</label>
+          <input
+            type="text"
+            formControlName="phoneNumber"
+            class="form-control mb-1"
+            placeholder="Enter your Phone Number"
+          />
+
+          @if (form.get('phoneNumber')?.touched &&
+          form.get('phoneNumber')?.invalid) {
+          <div class="text-danger small mb-3">
+            @if (form.get('phoneNumber')?.errors?.['required']) {
+            <div>Phone number is required.</div>
+            } @if (form.get('phoneNumber')?.errors?.['pattern']) {
+            <div>Phone number must be 10–15 digits.</div>
+            }
+          </div>
+          }
+        </div>
+
+          <button
+            class="btn w-100 mt-3"
+            [disabled]="form.invalid"
+            [class.bg-secondary]="form.invalid"
+            style="background: #0b5c2f; color:white">
+            Confirm
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

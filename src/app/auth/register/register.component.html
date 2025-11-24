@@ -1,0 +1,102 @@
+<!-- Top Green Curve -->
+<div class="container d-flex justify-content-center align-content-center">
+  <div class="content mt-5 w-75 border border-1 shadow rounded p-2 p-md-5">
+    <div class="top-curve text-start d-flex align-items-end">
+      <h3 class="fw-bold ms-2">Create Account</h3>
+    </div>
+
+    <div class="container form-container">
+      <div class="card border-0 shadow-sm p-2 p-md-4 rounded-4">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <!-- Full Name -->
+          <label class="fw-semibold mb-2">Full Name</label>
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control mb-1"
+            placeholder="Enter your Full Name"
+          />
+
+          @if (form.get('name')?.touched && form.get('name')?.invalid) {
+          <div class="text-danger small mb-3">
+            @if (form.get('name')?.errors?.['required']) {
+            <div>Full Name is required.</div>
+            } @if (form.get('name')?.errors?.['pattern']) {
+            <div>Enter a valid name (letters only).</div>
+            }
+          </div>
+          }
+
+        <div class="form-group">
+           <!-- Phone Number -->
+          <label class="fw-semibold mb-2">Phone Number</label>
+          <input
+            type="text"
+            formControlName="phoneNumber"
+            class="form-control mb-1"
+            placeholder="Enter your Phone Number"
+          />
+
+          @if (form.get('phoneNumber')?.touched &&
+          form.get('phoneNumber')?.invalid) {
+          <div class="text-danger small mb-3">
+            @if (form.get('phoneNumber')?.errors?.['required']) {
+            <div>Phone number is required.</div>
+            } @if (form.get('phoneNumber')?.errors?.['pattern']) {
+            <div>Phone number must be 10–15 digits.</div>
+            }
+          </div>
+          }
+        </div>
+
+          <!-- Password -->
+          <label class="fw-semibold mb-2">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control mb-1"
+            placeholder="Enter your Password"
+          />
+
+          @if (form.get('password')?.touched && form.get('password')?.invalid) {
+          <div class="text-danger small mb-3">
+            @if (form.get('password')?.errors?.['required']) {
+            <div>Password is required.</div>
+            } @if (form.get('password')?.errors?.['minlength']) {
+            <div>Password must be at least 6 characters.</div>
+            }
+          </div>
+          }
+
+          <!-- Confirm Password -->
+          <label class="fw-semibold mb-2">Confirm Password</label>
+          <input
+            type="password"
+            formControlName="confPassword"
+            class="form-control mb-1"
+            placeholder="Enter your Password"
+          />
+
+          <!-- Message Area -->
+          @if (form.get('password')?.value && form.get('confPassword')?.value) {
+          @if (form.errors?.['mismatch']) {
+          <p class="text-danger small mt-1">Passwords do not match</p>
+          } @else {
+          <p class="text-success small mt-1">Passwords match</p>
+          } }
+
+          <button
+          class="btn w-100 mt-3"
+          [disabled]="form.invalid"
+          [class.bg-secondary]="form.invalid"
+          >Continue</button>
+        </form>
+
+        <p class="text-center mt-3">
+          Already have an account?
+          <a routerLink="/auth/login" class="text-danger fw-semibold">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
