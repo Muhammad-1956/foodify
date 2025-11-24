@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { SliderComponent } from '../slider/slider.component';
 import { MealService } from '../services/meal.service';
+import { CategoriesComponent } from '../categories/categories.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SliderComponent],
+  imports: [SliderComponent, CategoriesComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
