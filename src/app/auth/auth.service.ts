@@ -18,14 +18,14 @@ register(full_name: string, phone: string, password: string, password_confirmati
   fd.append('password', password);
   fd.append('password_confirmation', password_confirmation);
   console.log(fd)
-  return this.httpClient.post(`${environment.apiBaseUrl}register`,fd)
+  return this.httpClient.post(`register`,fd)
 }
 login( phone: string, password: string){
   const fd = new FormData();
   fd.append('phone', phone);
   fd.append('password', password);
   console.log(fd)
-  return this.httpClient.post(`${environment.apiBaseUrl}login`,fd)
+  return this.httpClient.post(`login`,fd)
 }
 
 // verify phone number
@@ -33,7 +33,7 @@ verify(otp: string, phone: string){
   const fd = new FormData();
   fd.append('otp', otp);
   fd.append('phone', phone);
-  return this.httpClient.post(`${environment.apiBaseUrl}verify-otp`, fd);
+  return this.httpClient.post(`verify-otp`, fd);
 }
 
 // resend otp
@@ -41,7 +41,7 @@ resend(otp: string, phone: string){
   const fd = new FormData();
   fd.append('otp', otp);
   fd.append('phone', phone);
-  return this.httpClient.post(`${environment.apiBaseUrl}resend-verify-otp`, fd);
+  return this.httpClient.post(`resend-verify-otp`, fd);
 }
 
 // resend-verify-otp
@@ -49,7 +49,7 @@ sendRequest(endPoint: string, otp: string, phone: string) {
   const fd = new FormData();
   fd.append('otp', otp);
   fd.append('phone', phone);
-  return this.httpClient.post(`${environment.apiBaseUrl}${endPoint}`, fd);
+  return this.httpClient.post(`${endPoint}`, fd);
 }
 // 01528374839
 

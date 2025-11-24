@@ -13,20 +13,11 @@ export class MealService{
 
   //Get Recommend Meals
   getRecommended(){
-    const userToken = localStorage.getItem('userToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json'
-    });
-    return this.httpClient.get(`${environment.apiBaseUrl}recommended`, {headers});
+    return this.httpClient.get(`recommended`);
   }
+
   //Get Categories Meals
   getCategories(){
-    const userToken = localStorage.getItem('userToken');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${userToken}`,
-      'Content-Type': 'application/json'
-    });
-    return this.httpClient.get(`${environment.apiBaseUrl}categories`, {headers});
+    return this.httpClient.get(`categories`);
   }
 }
