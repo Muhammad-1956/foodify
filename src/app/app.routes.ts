@@ -61,10 +61,24 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'meal-details/:id',
+        path: 'meal-details',
         loadComponent: () =>
           import('./features/meal-details/meal-details.component').then(
             (c) => c.MealDetailsComponent
+          ),
+      },
+      {
+        path: 'payment',
+        loadComponent: () =>
+          import('./features/payment/payment.component').then(
+            (c) => c.PaymentComponent
+          ),
+      },
+      {
+        path: 'payment/add-card',
+        loadComponent: () =>
+          import('./features/payment/add-card/add-card.component').then(
+            (c) => c.AddCardComponent
           ),
       },
     ],

@@ -1,1 +1,70 @@
-<p>cart works!</p>
+@if(cart().length > 0){
+<section class="cart row d-flex justify-content-center align-items-center px-2 px-md-0">
+    @for(meal of cart(); track meal.id){
+      <article class="col-12 col-lg-8 p-3 rounded-2 shadow mt-3 mt-md-4 mt-lg-5">
+        <article class="d-flex align-items-center">
+        <div class="left d-flex align-items-center gap-4 flex-grow-1">
+            <img class="" [src]="meal.image" alt="Dish Image">
+        <span class="d-flex flex-column ">
+          <h5 class="p-0 m-0">{{meal.name}}</h5>
+          <small class="d-block">
+          calories:
+            <i
+              class="fa-fire fa-solid"
+            ></i>
+          {{meal.kcal}} Kcal
+          </small>
+        <small>price: {{meal.price }} EGP / per meal</small>
+        </span>
+        </div>
+        <div class="actions d-flex flex-column-reverse flex-md-column p-1 p-md-2 text-center text-md-end">
+          <strong class="fw-bold">{{meal.subtotal | number:'1.2-2'}} EGP</strong>
+          <div class="d-flex flex-column-reverse flex-md-row align-items-center gap-1 gap-md-3 p-1 p-md-2">
+            <div class="d-flex input-group">
+              <button class="btn btn-outline-secondary btn-decrement"
+                      type="button"
+                      (click)="decrement(meal.id, meal.quantity)">−</button>
+
+              <input class="form-control text-center" [value]="meal.quantity" readonly>
+
+              <button class="btn btn-outline-secondary btn-increment"
+                      type="button"
+                      (click)="increment(meal.id, meal.quantity)">+</button>
+            </div>
+            <button
+            class="btn btn-secondary align-self-end align-self-md-center hover-danger btn-sm px-2 py-1 px-md-3"
+            (click)="RemoveFromCart(meal.id)"
+            >
+              <i class="fa-solid fa-xmark py-2"></i>
+            </button>
+          </div>
+        </div>
+        </article>
+      </article>
+    }
+    <div class="summery col-12 col-lg-8 rounded-2">
+    <div class="shadow p-3 rounded-3 my-5">
+      <p class="d-flex justify-content-between align-items-center">
+      <span>Subtotal</span>
+      <span>{{subTotal() | number:'1.2-2'}} EGP</span>
+    </p>
+    <p class="d-flex justify-content-between align-items-center">
+      <span>Delivery</span>
+      <span>{{deliveryPrice()}} EGP</span>
+    </p>
+    <p class="d-flex justify-content-between align-items-center">
+      <span>Total</span>
+      <span>{{total()| number:'1.2-2' }} EGP</span>
+    </p>
+    </div>
+    <a
+    class="btn btn-success w-100"
+    routerLink="/payment"
+    >
+    Check out
+    </a>
+  </div>
+  </section>
+}@else{
+  <app-empty [image]="image" [content]="content" [path]="path"></app-empty>
+}

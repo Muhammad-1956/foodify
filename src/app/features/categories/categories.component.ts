@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { MealService } from '../services/meal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -12,7 +13,7 @@ export class CategoriesComponent {
 
   categories: any = signal([]);
 
-    constructor(private mealService: MealService){
+    constructor(private mealService: MealService, private router: Router){
 
     }
 
@@ -23,8 +24,12 @@ export class CategoriesComponent {
       this.mealService.getCategories().subscribe({
         next: (res:any)=>{
           this.categories.set(res.data)
-          console.log(res.data)
         }
       })
+    }
+
+    // Navigate to Category's Dishses
+    onClick(category_id: string){
+      this.router.navigate(['/meals'],{queryParams: {category_id}})
     }
 }

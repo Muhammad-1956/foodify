@@ -10,4 +10,28 @@
 
 // Bootstrap 5 styled toastr (optional, if you want BS5 alert style)
 @import "ngx-toastr/toastr-bs5-alert";
+/* Poppins font for the whole app */
+html, body {
+  font-family: 'Poppins', sans-serif !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main colors */
+:root {
+  font-family: 'Poppins', sans-serif !important;
+  --primary-color: #065E21;  // green
+  --secondary-color: #B52323; // red
+
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+}
+
+/* Utility classes */
+.primary { color: var(--primary-color) !important; }
+.secondary { color: var(--secondary-color) !important; }
+.bg-primary { background-color: var(--primary-color) !important; }
+.bg-secondary { background-color: var(--secondary-color) !important; }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from "@angular/router";
+import { MealService } from '../../features/services/meal.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,4 +19,24 @@ export class NavbarComponent {
       this.activePanel = panel;
     }
   }
+  dishes: any[] = [];
+categoryId = '1'; // dynamic later
+
+constructor(private api: MealService) {}
+
+ngOnInit() {
+  this.loadDishes();
+}
+
+loadDishes(search: string = '') {
+  this.api.getDishes(this.categoryId, search)
+    .subscribe((res: any) => {
+      this.dishes = res.data;
+    });
+}
+
+onSearch(event: any) {
+  const value = event.target.value;
+  this.loadDishes(value);
+}
 }

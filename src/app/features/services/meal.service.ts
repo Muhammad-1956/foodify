@@ -20,4 +20,16 @@ export class MealService{
   getCategories(){
     return this.httpClient.get(`categories`);
   }
+  //Get Meals
+  getDishes(category_id: string, search?: string){
+    return this.httpClient.get(`categories/${category_id}/dishes`,
+    {
+      params: { search: search ?? ''}
+    });
+  }
+  // Get Dish Details
+  getDetails(dish_id:string){
+    return this.httpClient.get(`dishes/${dish_id}`)
+  }
+
 }

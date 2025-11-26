@@ -1,0 +1,137 @@
+<section class="container py-2 mt-2 d-flex justify-content-center align-items-center">
+  <main class="container-content">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center mb-3">
+      <a (click)="backToPaymentMethod()" class="text-dark me-3">
+        <i class="fa-solid fa-arrow-left"></i>
+      </a>
+      <h5 class="mb-0">Add New Card</h5>
+    </div>
+
+    <!-- Card Preview -->
+    <div class="card-container">
+      <div class="card rounded-5" [class.flipped]="cvvFocus">
+
+        <!-- Front Side -->
+        <div class="card-side card-front">
+          <div class="d-flex justify-content-between align-items-center">
+
+            <!-- Dynamic Card Name -->
+            <span class="fw-semibold text-capitalize">
+              {{ cardType || 'Card Type' }}
+            </span>
+
+            <!-- Dynamic Card Logo -->
+            <ng-container [ngSwitch]="selectedPaymentMethod">
+              <i *ngSwitchCase="'paypal'" class="fa-brands fa-cc-paypal fa-2x"></i>
+              <i *ngSwitchCase="'mastercard'" class="fa-brands fa-cc-mastercard fa-2x"></i>
+              <i *ngSwitchCase="'visa'" class="fa-brands fa-cc-visa fa-2x"></i>
+              <img *ngSwitchCase="'apple pay'" src="./assets/images/apple-pay.png" width="38" />
+              <i *ngSwitchDefault class="fa-regular fa-credit-card fa-2x text-white-50"></i>
+            </ng-container>
+
+          </div>
+
+          <div class="card-number mt-3 fs-5">
+            {{ number | cardNumber }}
+          </div>
+
+          <div class="d-flex mt-4 justify-content-between align-items-center mt-2">
+            <small>{{ name | cardholderName }}</small>
+            <small>{{ expiryDate || 'DD-MM-YYYY' }}</small>
+          </div>
+        </div>
+
+        <!-- Back Side -->
+        <div class="card-side card-back">
+          <div class="magnetic-strip"></div>
+          <div class="cvv-box"><span>{{ cvv || '000' }}</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form #cardForm="ngForm" (ngSubmit)="onSubmit(cardForm)" class="mt-4">
+
+      <!-- Card Type Dropdown -->
+      <div class="mb-2">
+        <label class="form-label fw-semibold">Card Type</label>
+        <select class="form-select"
+                name="cardType"
+                [(ngModel)]="cardType"
+                required>
+          <option value="" disabled>Select Card</option>
+          <option value="visa">Visa</option>
+          <option value="mastercard">MasterCard</option>
+          <option value="paypal">PayPal</option>
+          <option value="apple pay">Apple Pay</option>
+        </select>
+      </div>
+
+      <!-- Cardholder Name -->
+      <div class="mb-2">
+        <label class="form-label">Cardholder Name</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Cardholder Name"
+               [(ngModel)]="name"
+               name="name"
+               required
+               (input)="onlyAzChars($event)"
+               />
+      </div>
+
+      <!-- Card Number -->
+      <div class="mb-2">
+        <label class="form-label">Card Number</label>
+        <div class="input-group">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Card Number"
+                 maxlength="19"
+                 [(ngModel)]="number"
+                 name="number"
+                 required
+                 (input)="onlyNumbers($event)" />
+        </div>
+      </div>
+
+      <!-- Expiry & CVV -->
+      <div class="row">
+        <div class="col-6 mb-2">
+          <label class="form-label">Expiry Date</label>
+          <input type="date"
+                 class="form-control"
+                 [(ngModel)]="expiryDate"
+                 name="expiryDate" />
+        </div>
+
+        <div class="col-6 mb-2">
+          <label class="form-label">CVV Code</label>
+          <input type="text"
+                 class="form-control"
+                 placeholder="000"
+                 maxlength="3"
+                 [(ngModel)]="cvv"
+                 name="cvv"
+                 required
+                 (focus)="onCvvFocus()"
+                 (blur)="onCvvBlur()"
+                 (input)="onlyNumbers($event)" />
+        </div>
+      </div>
+
+      @if (!isValid()) {
+        <p class="text-danger py-1">Please fill all required fields.</p>
+      }
+
+      <button type="submit"
+              class="save-btn mt-1 btn btn-primary w-100">
+        Save
+      </button>
+
+    </form>
+  </main>
+</section>

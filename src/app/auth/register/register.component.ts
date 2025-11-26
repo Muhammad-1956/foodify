@@ -22,7 +22,7 @@ export class RegisterComponent {
 form = new FormGroup({
   name: new FormControl('', [
     Validators.required,
-    Validators.pattern('[A-Za-z]{3,30}')
+    Validators.pattern('^[A-Za-z ]{3,30}$')
   ]),
   phoneNumber: new FormControl('', [
     Validators.required,

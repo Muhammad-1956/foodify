@@ -1,0 +1,55 @@
+.meal-details {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+/* Image Section */
+.image-container {
+  height: 100px;
+  .meal-img {
+    width: 10.625rem;
+    height: 10.625rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+
+/* Ingredients */
+.ingredient-box {
+  width: 45px;
+  height: 45px;
+  background: #eef9f1;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ingredient-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+}
+
+/* Typography spacing helpers */
+h3,
+h4,
+h6 {
+  font-weight: 600;
+}
+
+p {
+  &.small {
+    font-size: 0.85rem;
+  }
+}
+@media screen and (max-width: 767px){
+  .image-container[_ngcontent-ng-c4145380786] .meal-img[_ngcontent-ng-c4145380786] {
+    width: 8.625rem;
+    height: 8.625rem;
+    }
+    h4 {
+        font-size: calc(1rem + .3vw);
+    }
+}

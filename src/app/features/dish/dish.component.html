@@ -1,0 +1,61 @@
+<article
+  class="card shadow p-2 rounded-2 d-flex flex-column align-content-center justify-content-center"
+>
+  <div class="image d-flex flex-column justify-content-end position-relative">
+    <img
+      class="position-absolute top-0 end-0 translate-middle-y"
+      [src]="dish().image"
+      alt="Meal Image"
+    />
+  </div>
+  <!-- Text Section -->
+  <div class="p-3">
+    <div class="head w-50 w-sm-0 text-start">
+      <h5
+      (click)="onClick(dish().id)"
+      class="fw-semibold mb-1">{{ dish().name }}</h5>
+      <p class="text-muted small mb-2">
+        {{ dish().description || 'This Pargraph Will Appear To Save The Card Design.. <3' }}
+      </p>
+    </div>
+
+    <p class="fw-bold mb-2 d-flex justify-content-between">
+      <span>{{ dish().price }} EGP</span>
+      <span>
+        <i
+          class="fa-fire fa-solid"
+        ></i>
+        {{ dish().kcal }}Kcal {{ dish().protein }}
+      </span>
+    </p>
+
+    <!-- Protein / Add Button Row -->
+    <div class="d-flex align-items-center justify-content-between mt-2">
+      <!-- Rating -->
+      <div class="stars">
+        @for (star of [].constructor(maxStars); track $index) {
+          <i
+            class="fa-star"
+            [class.fas]="($index + 1) <= dish().rating"
+            [class.far]="($index + 1) > dish().rating"
+          ></i>
+        }
+        <i class="fa-star fas"></i>
+      </div>
+
+      <span class="fav d-flex justify-content-center align-items-center gap-1">
+        <i
+        class="fa-heart"
+        [class.far]="!isToggle()"
+        [class.fas]="isToggle()"
+        (click)="toggle(dish().id)"
+        ></i>
+
+        <button
+        class="btn btn-success btn-sm px-3"
+        (click)="addToCart(dish().id)"
+        >Add</button>
+      </span>
+    </div>
+  </div>
+</article>

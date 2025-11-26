@@ -23,12 +23,12 @@ export class HttpBaseInterceptor implements HttpInterceptor {
 
     const headers: Record<string, string> = {};
 
-    // ❌ No Authorization for auth routes
+    // No Authorization for auth routes
     if (!isNoAuth && token) {
       headers['Authorization'] = `Bearer ${token}`;
     }
 
-    // ❌ DO NOT set content-type for FormData
+    // DO NOT set content-type for FormData
     if (!isFormData) {
       headers['Content-Type'] = 'application/json';
     }

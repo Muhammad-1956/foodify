@@ -30,18 +30,13 @@ login( phone: string, password: string){
 
 // verify phone number
 verify(otp: string, phone: string){
-  const fd = new FormData();
-  fd.append('otp', otp);
-  fd.append('phone', phone);
-  return this.httpClient.post(`verify-otp`, fd);
+
+  return this.sendRequest('verify-otp',otp,phone);
 }
 
 // resend otp
 resend(otp: string, phone: string){
-  const fd = new FormData();
-  fd.append('otp', otp);
-  fd.append('phone', phone);
-  return this.httpClient.post(`resend-verify-otp`, fd);
+  return this.sendRequest('verify',otp,phone);
 }
 
 // resend-verify-otp

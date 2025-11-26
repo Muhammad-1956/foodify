@@ -1,0 +1,33 @@
+.fav{
+  .fas{
+    color: darkred;
+  }
+}
+.btn-hover-danger:hover {
+  background-color: var(--bs-danger) !important;
+  border-color: var(--bs-danger) !important;
+}
+.actions{
+  input{
+    width: 40px;
+  }
+  .input-group{
+    flex-wrap: nowrap;
+  }
+}
+@media screen and ( max-width: 767px){
+  .cart{
+    img{
+      width: 77px;
+    }
+    h5{
+      font-size: 1rem;
+    }
+    small{
+      font-size: 0.85em;
+    }
+    .summery{
+      margin-bottom: 140px;
+    }
+  }
+}

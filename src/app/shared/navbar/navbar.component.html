@@ -9,7 +9,7 @@
 
     <!-- CENTER: Search (hidden on small screens) -->
     <form class="d-none d-lg-block w-50 mx-auto">
-      <input class="form-control rounded-pill text-block-50" type="search" placeholder="Search meals...">
+      <input class="form-control rounded-pill text-block-50" type="search" placeholder="Search meals..." (input)="onSearch($event)">
     </form>
 
     <!-- RIGHT: Navs + icons -->
@@ -77,6 +77,7 @@
         type="text"
         class="form-control border-0"
         placeholder="What Do You Want To Eat ?"
+        (input)="onSearch($event)"
         >
       </div>
     </form>

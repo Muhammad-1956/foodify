@@ -1,0 +1,16 @@
+<section class="empty row mt-5 d-flex justify-content-center align-items-center">
+  <main class="col-6 text-center">
+    <div class="head mb-3 pb-3 mb-lg-5 pb-lg-5">
+      <div class="image">
+      <img class="w-50 img-fluid" [src]="image()" alt="">
+      </div>
+      <p class="py-2 mx-auto">
+       {{content()}}
+      </p>
+    </div>
+    <a
+    class="btn btn-success w-100"
+    [routerLink]="path()"
+    >Explore Categories</a>
+  </main>
+</section>

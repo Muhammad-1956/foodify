@@ -1,0 +1,32 @@
+.card {
+  min-height: 217px;
+  h5{
+    cursor: pointer;
+  }
+}
+.stars {
+.fas {
+color: gold;
+}
+
+}
+.fav{
+  .fas{
+    color: darkred;
+  }
+}
+.far {
+color: #ccc;
+}
+
+@media screen and (max-width: 1424px) {
+  .card {
+    min-height: 261px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    min-height: 220px;
+    margin-bottom: 10px;
+  }
+}

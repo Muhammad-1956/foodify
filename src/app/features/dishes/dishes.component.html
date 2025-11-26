@@ -1,0 +1,8 @@
+<section class="meals row mt-3">
+  <p class="fw-bold h5 mb-5">Meals</p>
+ @for(dish of dishes(); track dish.id){
+<article class="col-12 col-md-6 col-lg-4 mt-5 mb-2 mb-md-4">
+<app-dish [dish]="dish"/>
+</article>
+}
+</section>
