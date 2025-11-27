@@ -16,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent {
 
-  constructor(private authService: AuthService, private router: Router, private toaster: ToastrService ){
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService ){
 
   }
 
@@ -45,7 +45,12 @@ onSubmit(){
     const confPassword= this.form.get('confPassword')?.value ?? '';
     const phoneNumber= this.form.get('phoneNumber')?.value ?? '';
 
-  this.authService.register(name, phoneNumber, password, confPassword).subscribe({
+    const fd = new FormData();
+      fd.append('full_name', name);
+      fd.append('phone', phoneNumber);
+      fd.append('password', password);
+      fd.append('password_confirmation', confPassword);
+  this.authService.register(fd).subscribe({
     next: (res: any)=>{
       console.log(res)
       this.router.navigate(['/auth/otp'], { queryParams: { phoneNumber } })
@@ -66,7 +71,7 @@ onSubmit(){
       }
     }
 
-    this.toaster.error(message);
+    this.toastr.error(message);
   }
   })
   }}

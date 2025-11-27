@@ -14,9 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 export class MealsComponent {
   meals: Dish | any = signal([]);
   category_id = ''
+  category_name = ''
   constructor(private mealService: MealService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params: any) => {
       this.category_id = params['category_id'];
+      this.category_name = params['category_name'];
+      this.category_name == 'Balanced Meals' || this.category_name == 'Smoothies' ?  this.category_name : this.category_name += ' Meals';
     });
   }
 

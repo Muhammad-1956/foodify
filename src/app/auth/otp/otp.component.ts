@@ -26,7 +26,7 @@ export class OtpComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,private router: Router, private authService: AuthService) {}
-
+  isForget = undefined
   ngOnInit() {
     const intervalId = setInterval(() => {
       const newValue = this.counter() - 1;
@@ -47,6 +47,9 @@ export class OtpComponent implements OnInit {
     this.route.queryParams.subscribe((params: any) => {
       this.number = params['phoneNumber'];
     });
+    this.route.queryParams.subscribe((params: any) => {
+      this.isForget = params['isForget'];
+    });
   }
 
   form = new FormGroup({
@@ -66,7 +69,11 @@ export class OtpComponent implements OnInit {
       this.authService.verify(otp, number).subscribe({
         next: (res: any)=>{
           console.log(res)
-          this.router.navigate(['/auth/login'],{ queryParams: { number } })
+          if(this.isForget){
+            this.router.navigate(['/auth/new-password'],{ queryParams: { number } })
+          }else{
+            this.router.navigate(['/auth/login'],{ queryParams: { number } })
+          }
         }
       })
       this.form.reset();

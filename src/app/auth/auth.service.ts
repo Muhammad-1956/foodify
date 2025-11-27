@@ -10,27 +10,21 @@ export class AuthService{
 
   private httpClient= inject(HttpClient);
 
-register(full_name: string, phone: string, password: string, password_confirmation: string){
-  const fd = new FormData();
-
-  fd.append('full_name', full_name);
-  fd.append('phone', phone);
-  fd.append('password', password);
-  fd.append('password_confirmation', password_confirmation);
-  console.log(fd)
+register(fd: FormData){
   return this.httpClient.post(`register`,fd)
 }
-login( phone: string, password: string){
-  const fd = new FormData();
-  fd.append('phone', phone);
-  fd.append('password', password);
-  console.log(fd)
+login(fd: FormData){
   return this.httpClient.post(`login`,fd)
+}
+forgotPassword(fd: FormData){
+  return this.httpClient.post('forgot-password',fd)
+}
+resetPassword(fd: FormData){
+  return this.httpClient.post('reset-password',fd)
 }
 
 // verify phone number
 verify(otp: string, phone: string){
-
   return this.sendRequest('verify-otp',otp,phone);
 }
 
@@ -46,15 +40,24 @@ sendRequest(endPoint: string, otp: string, phone: string) {
   fd.append('phone', phone);
   return this.httpClient.post(`${endPoint}`, fd);
 }
-// 01528374839
-
+  // set token localStorage
   setToken(token: string): void {
     localStorage.setItem('userToken', token);
   }
 
-  // ✅ Get token from localStorage
+  // Get token from localStorage
   getToken(): string | null {
     return localStorage.getItem('userToken');
   }
 
+  // Logout
+  logout(){
+    // return this.httpClient.post('logout',{userId}).subscribe({
+    //   next: (res: any)=>{
+    //     console.log(res)
+    //     localStorage.removeItem('userToken');
+    //   }
+    // })
+    localStorage.removeItem('userToken');
+  }
 }

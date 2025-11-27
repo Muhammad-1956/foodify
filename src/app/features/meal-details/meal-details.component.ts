@@ -1,12 +1,12 @@
 import { ChangeDetectorRef, Component, signal } from '@angular/core';
 import { MealService } from '../services/meal.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EmptyComponent } from '../../shared/empty/empty.component';
 
 @Component({
   selector: 'app-meal-details',
   standalone: true,
-  imports: [EmptyComponent],
+  imports: [EmptyComponent, RouterLink],
   templateUrl: './meal-details.component.html',
   styleUrl: './meal-details.component.scss'
 })

@@ -7,7 +7,7 @@
       <div class="card text-center p-2 pb-0">
         <img [src]="category.image" class="card-img-top w-100 mx-auto" alt='{{category.name}} Image'>
         <div class="card-body px-0 pt-3 d-flex align-items-end">
-          <button (click)="onClick(category.id)" class="btn border bg-success text-white fw-bold w-100">{{category.name}}</button>
+          <button (click)="onClick(category.id, category.name)"  class="btn border bg-success text-white fw-bold w-100">{{category.name}}</button>
         </div>
       </div>
     </div>

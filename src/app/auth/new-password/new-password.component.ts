@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-new-password',
@@ -12,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class NewPasswordComponent {
   number: string = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private authService: AuthService, private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe((params: any) => {
       this.number = params['number'];
     })};
@@ -34,6 +35,19 @@ export class NewPasswordComponent {
 }
 
   onSubmit(){
-
+    const password = this.form.get('password')?.value ?? '';
+    const confirm = this.form.get('confirmPassword')?.value?? '';
+    const otp = '1234'
+    const phone  = this.number
+    const fd = new FormData()
+    fd.append('otp',otp)
+    fd.append('phone',phone)
+    fd.append('password',password)
+    fd.append('password_confirmation',confirm)
+    this.authService.resetPassword(fd).subscribe({
+      next: (res:any)=>{
+        this.router.navigate(['/auth/login'],{ queryParams: { number: this.number } })
+      }
+    })
   }
 }

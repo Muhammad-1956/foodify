@@ -29,7 +29,7 @@ export class CategoriesComponent {
     }
 
     // Navigate to Category's Dishses
-    onClick(category_id: string){
-      this.router.navigate(['/meals'],{queryParams: {category_id}})
+    onClick(category_id: string,category_name: string){
+      this.router.navigate(['/meals'],{queryParams: {category_id,category_name}})
     }
 }

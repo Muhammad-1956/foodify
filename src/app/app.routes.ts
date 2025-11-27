@@ -26,20 +26,6 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'profile',
-        loadComponent: () =>
-          import('./features/profile/profile.component').then(
-            (c) => c.ProfileComponent
-          ),
-      },
-      {
-        path: 'personal-profile',
-        loadComponent: () =>
-          import('./features/personal-information/personal-information.component').then(
-            (c) => c.PersonalInformationComponent
-          ),
-      },
-      {
         path: 'categories',
         loadComponent: () =>
           import('./features/categories/categories.component').then(
@@ -47,6 +33,22 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'meals',
+        loadComponent: () =>
+          import('./features/meals/meals.component').then(
+            (c) => c.MealsComponent
+          ),
+      },
+    ],
+  },
+  {
+    path: 'meal-details',
+    loadComponent: () =>
+      import('./features/meal-details/meal-details.component').then(
+        (c) => c.MealDetailsComponent
+      ),
+  },
+  {
         path: 'cart',
         loadComponent: () =>
           import('./features/cart/cart.component').then(
@@ -58,20 +60,6 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/favorite/favorite.component').then(
             (c) => c.FavoriteComponent
-          ),
-      },
-      {
-        path: 'meals',
-        loadComponent: () =>
-          import('./features/meals/meals.component').then(
-            (c) => c.MealsComponent
-          ),
-      },
-      {
-        path: 'meal-details',
-        loadComponent: () =>
-          import('./features/meal-details/meal-details.component').then(
-            (c) => c.MealDetailsComponent
           ),
       },
       {
@@ -88,6 +76,18 @@ export const routes: Routes = [
             (c) => c.AddCardComponent
           ),
       },
-    ],
-  },
+        {
+        path: 'profile',
+        loadComponent: () =>
+          import('./features/profile/profile.component').then(
+            (c) => c.ProfileComponent
+          ),
+      },
+      {
+        path: 'personal-information',
+        loadComponent: () =>
+          import('./features/personal-information/personal-information.component').then(
+            (c) => c.PersonalInformationComponent
+          ),
+      },
 ];

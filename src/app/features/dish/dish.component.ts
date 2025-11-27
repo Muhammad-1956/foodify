@@ -23,7 +23,7 @@ export class DishComponent {
     private mealService: MealService,
     private cartService: CartService,
     private favoriteService: FavoriteService,
-    private toaster: ToastrService
+    private toastr: ToastrService
     ){}
 
 
@@ -36,7 +36,7 @@ export class DishComponent {
     this.favoriteService.toggleFavorite(id).subscribe({
       next: (res: any) => {
         console.log(res);
-        this.toaster.success(res.message)
+        this.toastr.success(res.message)
         this.isToggle.update((preValue)=> !preValue);
       },
       error: (err: any) => {
@@ -49,7 +49,7 @@ export class DishComponent {
       // Add To Cart
       this.cartService.addToCart(dish_id,'1').subscribe({
         next: (res: any)=> {
-          this.toaster.success(res.message)
+          this.toastr.success(res.message)
           console.log(res)
         }
       })

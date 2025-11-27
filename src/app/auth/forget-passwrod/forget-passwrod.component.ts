@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-forget-passwrod',
@@ -10,8 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './forget-passwrod.component.scss'
 })
 export class ForgetPasswrodComponent {
-
-  constructor(private router: Router){
+  constructor(private authService: AuthService,private router: Router){
 
   }
 
@@ -21,10 +21,16 @@ export class ForgetPasswrodComponent {
 
     onSubmit(){
       if(this.form.valid){
-        this.continueToNewPass(this.form.value.phoneNumber? this.form.value.phoneNumber : '')
+          const fd = new FormData()
+          fd.append('phone',this.form.value.phoneNumber? this.form.value.phoneNumber : '')
+          this.authService.forgotPassword(fd).subscribe({
+            next: (res:any)=>{
+              this.continueToNewPass(this.form.value.phoneNumber? this.form.value.phoneNumber : '')
+            }
+          })
       }
     }
     continueToNewPass(number: string){
-      this.router.navigate(['/auth/new-password'], { queryParams: { number } })
+      this.router.navigate(['/auth/otp'], { queryParams: { number, isForget: true } })
     }
 }
