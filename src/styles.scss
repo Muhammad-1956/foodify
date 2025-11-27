@@ -10,6 +10,8 @@
 
 // Bootstrap 5 styled toastr (optional, if you want BS5 alert style)
 @import "ngx-toastr/toastr-bs5-alert";
+
+
 /* Poppins font for the whole app */
 html, body {
   font-family: 'Poppins', sans-serif !important;
@@ -29,9 +31,68 @@ input:focus {
 }
 }
 
+// Success Toast
+.toast-success {
+  background-color: var(--main-color) !important; // الأخضر
+  color: #fff !important;
+}
+
+// Error Toast
+.toast-error {
+  background-color: #F44336 !important; // الأحمر
+  color: #fff !important;
+}
+
+// Info Toast
+.toast-info {
+  background-color: #2196F3 !important; // الأزرق
+  color: #fff !important;
+}
+
+// Warning Toast
+.toast-warning {
+  background-color: #FF9800 !important; // البرتقالي
+  color: #fff !important;
+}
+.toast-top-right {
+  top: 12px !important;
+  right: 12px !important;
+  bottom: auto !important;
+  left: auto !important;
+}
 /* Utility classes */
 .primary { color: var(--primary-color) !important; }
 .secondary { color: var(--secondary-color) !important; }
 .bg-primary { background-color: var(--primary-color) !important; }
 .bg-secondary { background-color: var(--secondary-color) !important; }
 
+// Success Toast
+.toast-success {
+  background-color: green !important; // الأخضر
+  color: #fff !important;
+}
+
+// Error Toast
+.toast-error {
+  background-color: #F44336 !important; // الأحمر
+  color: #fff !important;
+}
+
+// Info Toast
+.toast-info {
+  background-color: #2196F3 !important; // الأزرق
+  color: #fff !important;
+}
+
+// Warning Toast
+.toast-warning {
+  background-color: #FF9800 !important; // البرتقالي
+  color: #fff !important;
+}
+
+.toast-top-right {
+  top: 12px !important;
+  right: 12px !important;
+  bottom: auto !important;
+  left: auto !important;
+}

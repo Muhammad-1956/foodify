@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MealService } from '../services/meal.service';
 import { CartService } from '../services/cart.service';
 import { FavoriteService } from '../services/favorite.service';
+import { ToastrService } from 'ngx-toastr';
 // import { Dish } from '../interfaces/dish.interface';
 
 @Component({
@@ -13,15 +14,16 @@ import { FavoriteService } from '../services/favorite.service';
   styleUrl: './dish.component.scss'
 })
 export class DishComponent {
+  maxStars = [1,2,3,4,5]
   dish = input.required<[] | any>();
-  maxStars = 5;
   isToggle= signal(false);
   isFav = signal(false)
   constructor(
     private router: Router,
     private mealService: MealService,
     private cartService: CartService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private toaster: ToastrService
     ){}
 
 
@@ -34,6 +36,7 @@ export class DishComponent {
     this.favoriteService.toggleFavorite(id).subscribe({
       next: (res: any) => {
         console.log(res);
+        this.toaster.success(res.message)
         this.isToggle.update((preValue)=> !preValue);
       },
       error: (err: any) => {
@@ -46,15 +49,10 @@ export class DishComponent {
       // Add To Cart
       this.cartService.addToCart(dish_id,'1').subscribe({
         next: (res: any)=> {
+          this.toaster.success(res.message)
           console.log(res)
         }
       })
-      // // Remove From Favorites
-      // this.mealService.removeFromCart(dish_id).subscribe({
-      //   next: (res: any)=> {
-      //     console.log(res)
-      //   }
-      // })
   }
 }
 export interface Dish {

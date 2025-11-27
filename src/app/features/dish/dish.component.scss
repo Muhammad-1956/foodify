@@ -19,14 +19,25 @@ color: gold;
 color: #ccc;
 }
 
+@media screen and (min-width: 1424px) {
+  .card {
+    min-height: 236px;
+  }
+}
 @media screen and (max-width: 1424px) {
   .card {
-    min-height: 261px;
+    min-height: 282px;
   }
 }
 @media only screen and (max-width: 767px) {
   .card {
     min-height: 220px;
     margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 436px) {
+  .card {
+    min-height: 219px;
+    margin-bottom: 5px;
   }
 }

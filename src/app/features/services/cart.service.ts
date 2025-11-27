@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 
 @Injectable({
   providedIn:'root'
@@ -29,5 +29,21 @@ export class CartService{
     fd.append('quantity', quantity)
     return this.httpClient.post(`cart/${dish_id}/update-quantity`,fd)
   }
+
+
+  // Save Total To access by Payment Component
+  private _cartInfo = signal<any>('');
+
+  // ⬅ Getter
+  get cartInfo() {
+    return this._cartInfo();
+  }
+
+  // ⬅ Setter
+  set cartInfo(value: any) {
+    this._cartInfo.set(value);
+  }
+
+
 
 }

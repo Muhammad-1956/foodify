@@ -35,8 +35,18 @@ export class AddCardComponent {
   toggleNumber() { this.showNumber = !this.showNumber; }
 
   // Only allow numbers
+  onlyCvv(event: any) {
+     let value = event.target.value.replace(/\D/g, '');}
   onlyNumbers(event: any) {
-    event.target.value = event.target.value.replace(/\D/g, '');
+     let value = event.target.value.replace(/\D/g, '');
+
+  // Stop at 16 digits
+  if (value.length > 16) {
+    value = value.substring(0, 16);
+  }
+
+  event.target.value = value;   // updates UI
+  this.number = value;          // updates ngModel
   }
   //Only allow A-Za-z characters also spaces
   onlyAzChars(event: any){

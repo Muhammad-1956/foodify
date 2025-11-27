@@ -33,6 +33,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'personal-profile',
+        loadComponent: () =>
+          import('./features/personal-information/personal-information.component').then(
+            (c) => c.PersonalInformationComponent
+          ),
+      },
+      {
         path: 'categories',
         loadComponent: () =>
           import('./features/categories/categories.component').then(

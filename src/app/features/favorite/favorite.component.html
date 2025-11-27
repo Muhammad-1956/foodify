@@ -1,7 +1,7 @@
 @if(favorites().length > 0){
-<section class="cart row d-flex justify-content-center align-items-center">
+<section class="cart row d-flex justify-content-center align-items-center mt-2 mt-md-3 mt-lg-5 mb-5">
     @for(fav of favorites(); track fav.id){
-      <section class="mt-3 mt-md-4 mt-lg-5">
+      <section class="mt-5 mt-lg-3 mt-lg-4 mb-3 mb-lg-2">
         <app-dish [dish]="fav"/>
       </section>
     }

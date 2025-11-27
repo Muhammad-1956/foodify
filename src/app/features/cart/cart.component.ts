@@ -65,6 +65,7 @@ export class CartComponent {
     next: (res: any)=>{
       console.log(this.subTotal.set(res.total_price))
       this.totalPrice()
+      this.cartService.cartInfo = res
     }})
   this.cart.update(items =>
     items.map((item: any) =>

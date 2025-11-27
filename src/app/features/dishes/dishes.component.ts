@@ -9,5 +9,6 @@ import { Dish, DishComponent } from '../dish/dish.component';
   styleUrl: './dishes.component.scss'
 })
 export class DishesComponent {
+  title = input.required<string>()
   dishes = input.required<Dish[]>();
 }

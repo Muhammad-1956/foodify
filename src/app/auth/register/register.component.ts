@@ -4,6 +4,7 @@ import { Router, RouterLink } from "@angular/router";
 import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 // import { AuthService } from '../auth.service';
 
 @Component({
@@ -15,7 +16,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent {
 
-  constructor(private authService: AuthService, private router: Router){
+  constructor(private authService: AuthService, private router: Router, private toaster: ToastrService ){
 
   }
 
@@ -49,6 +50,24 @@ onSubmit(){
       console.log(res)
       this.router.navigate(['/auth/otp'], { queryParams: { phoneNumber } })
     }
+    ,
+  error: (err: any) => {
+    let message = 'Something went wrong!';
+
+    if (err.error) {
+      // Check if 'message' exists
+      if (err.error.message) {
+        message = err.error.message;
+      }
+      // Or check if there are field errors
+      else if (err.error.errors) {
+        const firstKey = Object.keys(err.error.errors)[0];
+        message = err.error.errors[firstKey][0];
+      }
+    }
+
+    this.toaster.error(message);
+  }
   })
   }}
 

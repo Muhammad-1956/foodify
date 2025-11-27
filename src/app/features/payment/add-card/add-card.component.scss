@@ -1,106 +1,101 @@
-// ====================
-// Variables
-// ====================
+/* add-card.component.scss */
+
 $card-green-start: #166a31;
 $card-green-end: #105231;
 $primary-font: 'Georgia', serif;
 
-// ====================
-// Page Container
-// ====================
 .container-content {
-  width: 378px;
-  font-family: $primary-font;
+width: 378px;
+font-family: $primary-font;
 }
 
-// ====================
-// Card Flip Container
-// ====================
+/* Card Flip Container */
 .card-container {
-  perspective: 1000px;
-  width: 380px;
-  height: 200px;
-  margin-bottom: 1rem;
+perspective: 1000px;
+width: 380px;
+height: 200px;
+margin-bottom: 1rem;
 
-  .card {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
+.card {
+width: 100%;
+height: 100%;
+position: relative;
+transform-style: preserve-3d;
+transition: transform 0.6s;
 
-    .card-side {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      backface-visibility: hidden;
-      color: #fff;
-      background: linear-gradient(135deg, $card-green-start, $card-green-end);
-
-      &.card-front {}
-
-      &.card-back {
-        transform: rotateY(180deg);
-      }
-
-
-    }
-
-    .card-number {
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      margin: 1rem 0;
-    }
-
-    .magnetic-strip {
-      background: #000;
-      height: 40px;
-      margin-top: 20px;
-      border-radius: 4px;
-    }
-
-    .cvv-box {
-      margin-top: 50px;
-      text-align: right;
-      padding: 5px 10px;
-      width: 60px;
-      background: #fff;
-      color: #000;
-      border-radius: 4px;
-      float: right;
-      font-weight: bold;
-    }
-  }
+&.flipped {
+  transform: rotateY(180deg);
 }
 
-// ====================
-// Save Button
-// ====================
-.save-btn {
-  background-color: rgb(17, 133, 83);
-  border: none;
+.card-side {
+  position: absolute;
   width: 100%;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  backface-visibility: hidden;
   color: #fff;
-  font-weight: 500;
-
-  &:hover {
-    background-color: rgb(15, 101, 55);
-  }
+  background: linear-gradient(135deg, $card-green-start, $card-green-end);
 }
 
-// ====================
-// Inputs (Remove Outline)
-// ====================
+.card-back {
+  transform: rotateY(180deg);
+  position: relative; // important for absolute positioning inside
+}
+
+.card-number {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+}
+
+.magnetic-strip {
+  background: #000;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+position: relative; // important for absolute positioning inside
+
+  .cvv-box {
+    position: absolute;
+    top: 95px;   // adjust based on your design
+    right: 30px; // moves it to the RIGHT side
+    padding: 5px 10px;
+    width: 60px;
+    background: #fff;
+    color: #000;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+
+}
+}
+
+/* Save Button */
+.save-btn {
+background-color: rgb(17, 133, 83);
+border: none;
+width: 100%;
+padding: 0.75rem;
+border-radius: 0.5rem;
+color: #fff;
+font-weight: 500;
+
+&:hover {
+background-color: rgb(15, 101, 55);
+}
+}
+
+/* Remove input outline */
 input,
 textarea {
-  &:focus {
-    outline: none;
-    box-shadow: none;
-    border-color: #ccc;
-  }
+&:focus {
+outline: none;
+box-shadow: none;
+border-color: #ccc;
 }
-
+}

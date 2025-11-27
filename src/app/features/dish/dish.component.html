@@ -33,14 +33,13 @@
     <div class="d-flex align-items-center justify-content-between mt-2">
       <!-- Rating -->
       <div class="stars">
-        @for (star of [].constructor(maxStars); track $index) {
-          <i
-            class="fa-star"
-            [class.fas]="($index + 1) <= dish().rating"
-            [class.far]="($index + 1) > dish().rating"
-          ></i>
-        }
-        <i class="fa-star fas"></i>
+        @for (star of maxStars; track $index) {
+            <i
+              class="fa-star"
+              [class.fas]="($index + 1) <= dish().rating"
+              [class.far]="($index + 1) > dish().rating"
+            ></i>
+          }
       </div>
 
       <span class="fav d-flex justify-content-center align-items-center gap-1">

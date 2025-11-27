@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     ),
 
     // provideAnimations(), // if using Angular animations
-
+    provideToastr(),
     provideToastr({
       positionClass: 'toast-top-right',
       timeOut: 4000,
