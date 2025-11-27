@@ -23,7 +23,7 @@
             </span>
 
             <!-- Dynamic Card Logo -->
-            <ng-container [ngSwitch]="selectedPaymentMethod">
+            <ng-container [ngSwitch]="cardType">
               <i *ngSwitchCase="'paypal'" class="fa-brands fa-cc-paypal fa-2x"></i>
               <i *ngSwitchCase="'mastercard'" class="fa-brands fa-cc-mastercard fa-2x"></i>
               <i *ngSwitchCase="'visa'" class="fa-brands fa-cc-visa fa-2x"></i>
