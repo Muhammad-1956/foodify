@@ -24,6 +24,13 @@ html, body {
   font-family: 'Poppins', sans-serif !important;
   --primary-color: #065E21;  // green
   --secondary-color: #B52323; // red
+  form{
+    input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ccc !important; /* optional */
+    }
+  }
 
 input:focus {
   outline: none !important;
