@@ -34,7 +34,7 @@ export class MealsComponent {
     this.mealService.getDishes(this.category_id).subscribe({
       next: (res: any) => {
         this.meals.set(res.data);
-        this.isLoading.set(true)
+        this.isLoading.set(false)
       },
     });
   }

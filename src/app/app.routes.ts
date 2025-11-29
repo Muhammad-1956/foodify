@@ -11,6 +11,7 @@ export const routes: Routes = [
     redirectTo: 'auth',
     pathMatch: 'full',
   },
+
   // ALL OTHER ROUTES USE CONTAINER
   {
     path: '',
@@ -31,7 +32,8 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/categories/categories.component').then(
             (c) => c.CategoriesComponent
-          ),canActivate: [AuthGuard],
+          ),
+        canActivate: [AuthGuard],
       },
       {
         path: 'meals',
