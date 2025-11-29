@@ -1,122 +1,129 @@
-<section class="container payment mt-5 d-flex justify-content-center flex-column align-items-center py-3 meal-details">
-
+@if(isLoading()){
+  <app-spinner [show]="true"/>
+}@else{
+  <section class="container payment mt-5 d-flex justify-content-center flex-column align-items-center py-3 meal-details">
+    <article class="col-12 col-md-8 col-lg-6 py-3 pb-5">
   <!-- Header -->
-
-  <article class="col-12 col-md-8 col-lg-6 py-3 pb-5">
-
-<h3 class="fw-bold align-self-start mb-2 mb-md-4">Payment Methods</h3>
-
-<!-- Credit & Debit Cards -->
-<h6 class="fw-bold mb-2">Credit & Debit Cards</h6>
-
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="card shadow-sm border-0 rounded-4 mb-3">
-    <div class="card-body p-3">
-
-      <!-- Card -->
-      @for(card of cards(); track card.id){
-      <div class="payment-item d-flex align-items-center p-2 rounded-3 mb-2">
-        <ng-container [ngSwitch]="card.type">
-          <i *ngSwitchCase="'paypal'" class="fa-brands fa-cc-paypal fa-2x"></i>
-          <i *ngSwitchCase="'mastercard'" class="fa-brands fa-cc-mastercard fa-2x"></i>
-          <i *ngSwitchCase="'visa'" class="fa-brands fa-cc-visa fa-2x"></i>
-          <img *ngSwitchCase="'apple pay'" src="./assets/images/apple-pay.png" width="38" />
-          <i *ngSwitchDefault class="fa-regular fa-credit-card fa-2x text-white-50"></i>
-        </ng-container>
-
-        <div class="flex-grow-1 ps-2 ps-md-3">
-          <span class="fw-semibold d-block small">{{card.name}}</span>
-          <span class="text-muted small">{{ card.details | maskedCard }}</span>
-        </div>
-
-        <input type="radio" name="payment" formControlName="payment" (input)="sendId(card.id)" [value]="card.id" class="form-check-input ms-2" />
+      <div class="w-100 d-flex justify-content-between align-items-center p-3 mb-2 mb-md-4">
+          <a class="text-black text-decoration-none" routerLink="/home">🡰</a>
+          <h1 class="h3">Payment Methods</h1>
       </div>
-      }
 
-      <!-- Add new card -->
-      <a class="btn d-flex align-items-center justify-content-center p-2 border rounded-3"
-        routerLink="/payment/add-card">
-        <i class="bi bi-plus-square me-2"></i>
-        Add New Card
-      </a>
+  <!-- Credit & Debit Cards -->
+  <h6 class="fw-bold mb-2">Credit & Debit Cards</h6>
 
-    </div>
-  </div>
-
-  <!-- More Payment Options -->
-  <div class="text-black-50">
-    <h6 class="fw-bold">More Payment Options</h6>
-    <span class="p-0 m-0 h6 mb-3 pb-md-3 pb-1">(Still Working on it...)</span>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="card shadow-sm border-0 rounded-4 mb-3">
-      <div class="card-body p-3 text-black-50">
+      <div class="card-body p-3">
 
-        <!-- Wallet -->
+        <!-- Card -->
+        @for(card of cards(); track card.id){
         <div class="payment-item d-flex align-items-center p-2 rounded-3 mb-2">
-          <i class="bi bi-wallet2 fs-4 me-3 text-success"></i>
-          <div class="flex-grow-1">
-            <span class="fw-semibold small">Wallet</span>
-          </div>
-          <input type="radio" name="payment" class="form-check-input ms-2" disabled="true" />
-        </div>
+          <ng-container [ngSwitch]="card.type">
+            <i *ngSwitchCase="'paypal'" class="fa-brands fa-cc-paypal fa-2x"></i>
+            <i *ngSwitchCase="'mastercard'" class="fa-brands fa-cc-mastercard fa-2x"></i>
+            <i *ngSwitchCase="'visa'" class="fa-brands fa-cc-visa fa-2x"></i>
+            <img *ngSwitchCase="'apple pay'" src="./assets/images/apple-pay.png" width="38" />
+            <i *ngSwitchDefault class="fa-regular fa-credit-card fa-2x text-white-50"></i>
+          </ng-container>
 
-        <!-- Net Banking -->
-        <div class="payment-item d-flex align-items-center p-2 rounded-3 mb-2">
-          <i class="bi bi-bank fs-4 me-3"></i>
-          <div class="flex-grow-1">
-            <span class="fw-semibold small">Net Banking</span>
+          <div class="flex-grow-1 ps-2 ps-md-3">
+            <span class="fw-semibold d-block small">{{card.name}}</span>
+            <span class="text-muted small">{{ card.details | maskedCard }}</span>
           </div>
-          <input type="radio" name="payment" class="form-check-input ms-2 " disabled="true" />
-        </div>
 
-        <!-- Cash on Delivery -->
-        <div class="payment-item d-flex align-items-center p-2 rounded-3">
-          <i class="bi bi-cash-stack fs-4 me-3 text-success"></i>
-          <div class="flex-grow-1">
-            <span class="fw-semibold small">Cash on Delivery</span>
+          <input type="radio" name="payment" formControlName="payment" (input)="sendId(card.id)" [value]="card.id" class="form-check-input ms-2" />
+        </div>
+        }
+
+        <!-- Add new card -->
+        <a class="btn d-flex align-items-center justify-content-center p-2 border rounded-3"
+          routerLink="/payment/add-card">
+          <i class="bi bi-plus-square me-2"></i>
+          Add New Card
+        </a>
+
+      </div>
+    </div>
+
+    <!-- More Payment Options -->
+    <div class="text-black-50">
+      <h6 class="fw-bold">More Payment Options</h6>
+      <span class="p-0 m-0 h6 mb-3 pb-md-3 pb-1">(Still Working on it...)</span>
+      <div class="card shadow-sm border-0 rounded-4 mb-3">
+        <div class="card-body p-3 text-black-50">
+
+          <!-- Wallet -->
+          <div class="payment-item d-flex align-items-center p-2 rounded-3 mb-2">
+            <i class="bi bi-wallet2 fs-4 me-3 text-success"></i>
+            <div class="flex-grow-1">
+              <span class="fw-semibold small">Wallet</span>
+            </div>
+            <input type="radio" name="payment" class="form-check-input ms-2" disabled="true" />
           </div>
-          <input type="radio" name="payment" class="form-check-input ms-2" disabled="true" />
-        </div>
 
+          <!-- Net Banking -->
+          <div class="payment-item d-flex align-items-center p-2 rounded-3 mb-2">
+            <i class="bi bi-bank fs-4 me-3"></i>
+            <div class="flex-grow-1">
+              <span class="fw-semibold small">Net Banking</span>
+            </div>
+            <input type="radio" name="payment" class="form-check-input ms-2 " disabled="true" />
+          </div>
+
+          <!-- Cash on Delivery -->
+          <div class="payment-item d-flex align-items-center p-2 rounded-3">
+            <i class="bi bi-cash-stack fs-4 me-3 text-success"></i>
+            <div class="flex-grow-1">
+              <span class="fw-semibold small">Cash on Delivery</span>
+            </div>
+            <input type="radio" name="payment" class="form-check-input ms-2" disabled="true" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm Button (NOW INSIDE THE FORM) -->
+    <div class="my-4 bg-white">
+      <button
+    type="submit"
+    class="btn w-100 py-2 rounded-3 fw-semibold confirm-btn"
+    [class.invalid]="form.invalid"
+    [disabled]="form.invalid">
+    Confirm
+  </button>
+
+    </div>
+
+
+  </form>
+  <!-- Modal -->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Payment Confirm</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>-Almost there! Please review your order one last time before confirming:</p>
+          <ul>
+            <li><strong>Total Items:</strong> {{ total_items }}</li>
+            <li><strong>Total Price:</strong> {{ total_price }} EGP</li>
+          </ul>
+          <p>-Are you ready to complete your payment?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="onConfirm()" class="btn btn-success w-100" data-bs-dismiss="modal">Confirm</button>
+          <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Confirm Button (NOW INSIDE THE FORM) -->
-  <div class="my-4 bg-white">
-    <button
-      class="btn btn-success w-100 py-2 rounded-3 fw-semibold"
-      data-bs-toggle="modal"
-      data-bs-target="#confirmModal">
-      Confirm
-    </button>
-  </div>
+    </article>
 
+  </section>
+}
 
-</form>
-<!-- Modal -->
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="confirmModalLabel">Payment Confirm</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>-Almost there! Please review your order one last time before confirming:</p>
-        <ul>
-          <li><strong>Total Items:</strong> {{ total_items() }}</li>
-          <li><strong>Total Price:</strong> {{ total_price() }} EGP</li>
-        </ul>
-        <p>-Are you ready to complete your payment?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" (click)="onConfirm()" class="btn btn-success w-100" data-bs-dismiss="modal">Confirm</button>
-        <button type="button" class="btn btn-secondary w-100" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  </article>
-
-</section>

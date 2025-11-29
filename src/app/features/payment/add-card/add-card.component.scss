@@ -99,3 +99,14 @@ box-shadow: none;
 border-color: #ccc;
 }
 }
+
+
+// ✅ When form is INVALID
+.invalid,
+:disabled {
+  background-color: #adb5bd !important; // ✅ gray
+  border-color: #adb5bd !important;
+  color: #ffffff !important;
+  cursor: not-allowed;
+  opacity: 0.8;
+}

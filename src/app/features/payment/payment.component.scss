@@ -1,3 +1,16 @@
-.invalid{
-  background: #9b9898 ;
+.confirm-btn {
+  background-color: #198754; // default bootstrap green
+  border-color: #198754;
+  color: #fff;
+  transition: 0.2s ease-in-out;
+}
+
+// ✅ When form is INVALID
+.confirm-btn.invalid,
+.confirm-btn:disabled {
+  background-color: #adb5bd !important; // ✅ gray
+  border-color: #adb5bd !important;
+  color: #ffffff !important;
+  cursor: not-allowed;
+  opacity: 0.8;
 }

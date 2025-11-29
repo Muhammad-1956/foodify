@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, output } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { MealService } from '../../features/services/meal.service';
 
@@ -19,6 +19,7 @@ export class NavbarComponent {
       this.activePanel = panel;
     }
   }
+  emitDishArr = output<any[]>()
   dishes: any[] = [];
   categoryId: any = '1';
   isDishesRoute = false;
@@ -38,9 +39,17 @@ ngOnInit() {
 loadDishes(search: string = '') {
   this.api.getDishes(this.categoryId, search)
     .subscribe((res: any) => {
+
       this.dishes = res.data;
+
+      console.log("Before emit:", this.dishes);
+
+      this.emitDishArr.emit(this.dishes); // send to parent
+
+      console.log("After emit");
     });
 }
+
 
 onSearch(event: any) {
   const value = event.target.value;

@@ -1,1 +1,5 @@
-<app-dishes title="Chef's Recommendations" [dishes]="chefRecommendations()"/>
+@if(isLoading()){
+  <app-spinner [show]="true"/>
+}@else{
+  <app-dishes title="Chef's Recommendations" [dishes]="chefRecommendations()"/>
+}

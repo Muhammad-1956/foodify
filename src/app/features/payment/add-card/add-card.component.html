@@ -1,16 +1,15 @@
-<section class="container py-2 mt-2 d-flex justify-content-center align-items-center mb-5">
-  <main class="container-content">
+<section class="container payment mt-5 d-flex justify-content-center flex-column align-items-center py-3 meal-details">
+  <main class="col-12 col-md-6 col-lg-4 py-3 pb-5 pb-lg-0">
 
     <!-- Header -->
-    <div class="d-flex align-items-center mb-3">
-      <a (click)="backToPaymentMethod()" class="text-dark me-3">
-        <i class="fa-solid fa-arrow-left"></i>
-      </a>
-      <h5 class="mb-0">Add New Card</h5>
+    <!-- Header -->
+    <div class="w-100 d-flex justify-content-between align-items-center p-3 mb-2 mb-md-4 mb-lg-0">
+        <a class="text-black text-decoration-none" routerLink="/payment">🡰</a>
+        <h1 class="h3">Add New Card</h1>
     </div>
 
     <!-- Card Preview -->
-    <div class="card-container">
+    <div class="card-container w-100">
       <div class="card rounded-5" [class.flipped]="cvvFocus">
 
         <!-- Front Side -->
@@ -130,7 +129,7 @@
       <button type="submit"
               class="save-btn mt-1 btn btn-primary w-100"
               [disabled]="cardForm.invalid"
-              [class.bg-black-50]="cardForm.invalid"
+              [class.invalid]="cardForm.invalid"
               >
         Save
       </button>

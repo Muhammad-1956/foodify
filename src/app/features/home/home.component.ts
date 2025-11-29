@@ -13,6 +13,12 @@ import { RecommendationsComponent } from '../recommendations/recommendations.com
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  dishesFromNavbar: any[] = []; // Store emitted dishes
 
+  onDishesFromNavbar(event: any) {
+  console.log('home', event);  // Should print array
+  this.dishesFromNavbar = event;
+}
 
 }
+

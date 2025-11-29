@@ -1,2 +1,7 @@
-<div class="mt-3 mt-md-4 mt-lg-5"></div>
-<app-dishes [title]="category_name" [dishes]="meals()"/>
+@if(isLoading()){
+  <app-spinner [show]="true"/>
+}@else{
+  <div class="mt-3 mt-md-4 mt-lg-5 mb-5 pb-5">
+    <app-dishes [title]="category_name" [dishes]="meals()"/>
+  </div>
+}

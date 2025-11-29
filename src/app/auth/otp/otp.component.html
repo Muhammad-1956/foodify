@@ -16,53 +16,66 @@
         (ngSubmit)="onSubmit()"
       >
         <div class="d-flex justify-content-center gap-3 mb-4">
-          <input
-            type="text"
-            maxlength="1"
-            class="form-control otp-box"
-            formControlName="d1"
-            placeholder="-"
-            (focus)="onFocus($event)"
-            (blur)="onBlur($event)"
-            (input)="moveFocus($event, 'd2')"
-            (keydown)="handleBackspace($event, null)"
-          />
+  <input
+    type="text"
+    maxlength="1"
+    class="form-control otp-box"
+    formControlName="d1"
+    placeholder="-"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    (keypress)="allowOnlyNumbers($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    (input)="moveFocus($event, 'd2')"
+    (keydown)="handleBackspace($event, null)"
+  />
 
-          <input
-            type="text"
-            maxlength="1"
-            class="form-control otp-box"
-            formControlName="d2"
-            placeholder="-"
-            (focus)="onFocus($event)"
-            (blur)="onBlur($event)"
-            (input)="moveFocus($event, 'd3')"
-            (keydown)="handleBackspace($event, 'd1')"
-          />
+  <input
+    type="text"
+    maxlength="1"
+    class="form-control otp-box"
+    formControlName="d2"
+    placeholder="-"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    (keypress)="allowOnlyNumbers($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    (input)="moveFocus($event, 'd3')"
+    (keydown)="handleBackspace($event, 'd1')"
+  />
 
-          <input
-            type="text"
-            maxlength="1"
-            class="form-control otp-box"
-            formControlName="d3"
-            placeholder="-"
-            (focus)="onFocus($event)"
-            (blur)="onBlur($event)"
-            (input)="moveFocus($event, 'd4')"
-            (keydown)="handleBackspace($event, 'd2')"
-          />
+  <input
+    type="text"
+    maxlength="1"
+    class="form-control otp-box"
+    formControlName="d3"
+    placeholder="-"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    (keypress)="allowOnlyNumbers($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    (input)="moveFocus($event, 'd4')"
+    (keydown)="handleBackspace($event, 'd2')"
+  />
 
-          <input
-            type="text"
-            maxlength="1"
-            class="form-control otp-box"
-            formControlName="d4"
-            placeholder="-"
-            (focus)="onFocus($event)"
-            (blur)="onBlur($event)"
-            (keydown)="handleBackspace($event, 'd3')"
-          />
-        </div>
+  <input
+    type="text"
+    maxlength="1"
+    class="form-control otp-box"
+    formControlName="d4"
+    placeholder="-"
+    inputmode="numeric"
+    pattern="[0-9]*"
+    (keypress)="allowOnlyNumbers($event)"
+    (focus)="onFocus($event)"
+    (blur)="onBlur($event)"
+    (keydown)="handleBackspace($event, 'd3')"
+  />
+</div>
+
 
         @if(isWrong() && !isTimeOut()){
         <p class="p-2 text-warning">Wrong OTP, Please insert the correct one...</p>

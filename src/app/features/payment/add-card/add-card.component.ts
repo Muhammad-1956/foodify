@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CardNumberPipe } from '../../pipes/card-number.pipe';
@@ -9,7 +9,7 @@ import { CardholderNamePipe } from '../../pipes/card-name.pipe';
 @Component({
   selector: 'app-add-card',
   standalone: true,
-  imports: [CommonModule, FormsModule, CardholderNamePipe, CardNumberPipe],
+  imports: [CommonModule, FormsModule, CardholderNamePipe, CardNumberPipe, RouterLink],
   templateUrl: './add-card.component.html',
   styleUrl: './add-card.component.scss'
 })

@@ -15,7 +15,6 @@ export const appConfig: ApplicationConfig = {
       withJsonpSupport(), // Optional
       // { interceptors: [AuthInterceptor] } // Add your interceptor
     ),
-
     // provideAnimations(), // if using Angular animations
     provideToastr(),
     provideToastr({

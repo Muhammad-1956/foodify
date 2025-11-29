@@ -59,6 +59,12 @@ export class OtpComponent implements OnInit {
     d4: new FormControl('', [Validators.required, Validators.pattern('[0-9]')]),
   });
 
+  allowOnlyNumbers(event: KeyboardEvent) {
+  if (!/^[0-9]$/.test(event.key)) {
+    event.preventDefault();
+  }
+}
+
   onSubmit() {
     if(this.form.valid){
       const { d1, d2, d3, d4 } = this.form.value;

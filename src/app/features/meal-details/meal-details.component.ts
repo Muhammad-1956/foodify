@@ -2,16 +2,17 @@ import { ChangeDetectorRef, Component, signal } from '@angular/core';
 import { MealService } from '../services/meal.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EmptyComponent } from '../../shared/empty/empty.component';
+import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-meal-details',
   standalone: true,
-  imports: [EmptyComponent, RouterLink],
+  imports: [SpinnerComponent, RouterLink],
   templateUrl: './meal-details.component.html',
   styleUrl: './meal-details.component.scss'
 })
 export class MealDetailsComponent {
-
+    isLoading = signal(false)
     dish_id=''
 
     constructor(private mealService: MealService, private route: ActivatedRoute, private cdr: ChangeDetectorRef) {

@@ -1,19 +1,33 @@
-@if(favorites().length > 0){
-<section class="cart d-flex justify-content-center align-items-center mt-2 mt-md-3 mt-lg-5 mb-5">
-  <section class="col-12 col-md-8">
-      <!-- Header -->
-    <div class="w-100 d-flex justify-content-between align-items-center p-3 mb-2">
-        <a class="text-black text-decoration-none" routerLink="/home">🡰</a>
-        <h1 class="h3">Favorites</h1>
-    </div>
-    <div class="clearfix mb-5"></div>
-    @for(fav of favorites(); track fav.id){
-        <div class="mb-5">
-          <app-dish [dish]="fav"/>
+@if(isLoading()){
+  <app-spinner [show]="true"/>
+}@else {
+  <section class="container px-4 px-lg-2 px-md-0 pb-md-0 mt-2 pt-2 mt-lg-1 pt-lg-1">
+    <section class="cart row d-flex justify-content-center align-items-center">
+      <article class="col-12 col-lg-6 p-3 mt-3 mt-md-4 mt-lg-1">
+        <div class="w-100 d-flex justify-content-between align-items-center p-3 mb-2">
+          <a class="text-black text-decoration-none" routerLink="/home">🡰</a>
+          <h1 class="h3">Favorites</h1>
         </div>
+      <!-- Header -->
+      @if(favorites().length > 0){
+      <div class="clearfix mb-5"></div>
+      @for(fav of favorites(); track fav.id){
+          <div class="mb-5">
+            <app-dish [dish]="fav" (updateFav)="UpdateFavs()"/>
+          </div>
+        }
+      }@else{
+        <div class="empty mx-auto">
+          <app-empty [image]="image" [content]="content" [path]="path"></app-empty>
+          <a
+                  class="btn btn-success w-100"
+                  routerLink="/categories"
+                  >Explore Categories
+                </a>
+        </div>
+
       }
+      </article>
+      </section>
     </section>
-  </section>
-}@else{
-  <app-empty [image]="image" [content]="content" [path]="path"></app-empty>
 }

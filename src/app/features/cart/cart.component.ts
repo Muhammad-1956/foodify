@@ -5,11 +5,12 @@ import { DishComponent } from '../dish/dish.component';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { CartService } from '../services/cart.service';
+import { SpinnerComponent } from '../../shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [EmptyComponent, DishComponent, RouterLink, DecimalPipe],
+  imports: [EmptyComponent, SpinnerComponent, RouterLink, DecimalPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -22,6 +23,7 @@ export class CartComponent {
   isToggle= signal(false);
   subTotal = signal(0)
   total = signal(0)
+  isLoading = signal(true)
   constructor(private mealService: MealService, private cartService: CartService){
 
   }
@@ -45,7 +47,7 @@ export class CartComponent {
       next: (res: any)=>{
         this.cart.set(res.data);
         this.allPrice();
-        console.log(res.data)
+        this.isLoading.set(false)
       }
     })
   }
