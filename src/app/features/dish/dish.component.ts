@@ -90,9 +90,9 @@ export class DishComponent {
     if ('fav' in localStorage) {
       this.fav = JSON.parse(localStorage.getItem('fav')!);
       const arrDish = Array(this.dish())
-      console.log(arrDish)
+      // console.log(arrDish)
       if( arrDish.some(dish => this.fav.includes(dish.id))){
-        console.log('fav')
+        // console.log('fav')
         this.isToggle.set(true);
       }else{
         this.isToggle.set(false);

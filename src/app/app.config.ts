@@ -2,10 +2,11 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideToastr } from 'ngx-toastr';
-
+import { provideAnimations } from '@angular/platform-browser/animations';
 // ✅ Import provideHttpClient and optional helpers
-import { HttpHandlerFn, HttpRequest, provideHttpClient, withInterceptors, withJsonpSupport, withRequestsMadeViaParent } from '@angular/common/http';
+import { HttpHandlerFn, HttpRequest, provideHttpClient, withInterceptors, withJsonpSupport } from '@angular/common/http';
 import { environment } from './core/environment/environment';
+import { IMAGE_CONFIG } from '@angular/common';
 // import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +16,14 @@ export const appConfig: ApplicationConfig = {
       withJsonpSupport(), // Optional
       // { interceptors: [AuthInterceptor] } // Add your interceptor
     ),
+    {
+    provide: IMAGE_CONFIG,
+    useValue: {
+      disableImageSizeWarning: true,
+      disableImageLazyLoadWarning: true
+    }
+  },
+  provideAnimations(),
     // provideAnimations(), // if using Angular animations
     provideToastr(),
     provideToastr({
@@ -59,3 +68,7 @@ export function httpBaseInterceptorFn(req: HttpRequest<any>, next: HttpHandlerFn
 
   return next(modifiedReq);
 }
+function provideImageKit(arg0: { disableImageDimensionsWarning: boolean; }): import("@angular/core").Provider | import("@angular/core").EnvironmentProviders {
+  throw new Error('Function not implemented.');
+}
+

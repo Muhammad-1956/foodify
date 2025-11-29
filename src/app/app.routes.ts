@@ -11,7 +11,6 @@ export const routes: Routes = [
     redirectTo: 'auth',
     pathMatch: 'full',
   },
-
   // ALL OTHER ROUTES USE CONTAINER
   {
     path: '',

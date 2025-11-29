@@ -38,7 +38,7 @@ export class CartComponent {
     this.cartService.removeFromCart(meal_id).subscribe({
       next: (res:any) =>{
         this.cart.update(items => items.filter((item: any) => item.id !== meal_id));
-        console.log(res)
+        this.allPrice();
       }
     })
   }
