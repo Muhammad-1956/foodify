@@ -29,10 +29,13 @@ color: #ccc;
     min-height: 282px;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 450px) {
   .card {
     min-height: 220px;
     margin-bottom: 10px;
+    img{
+      width: 120px
+    }
   }
 }
 @media only screen and (max-width: 436px) {
