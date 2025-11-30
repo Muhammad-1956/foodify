@@ -12,6 +12,7 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component';
   styleUrl: './meal-details.component.scss'
 })
 export class MealDetailsComponent {
+    meal = signal<DishDetails| any>({});
     isLoading = signal(false)
     dish_id=''
 
@@ -23,15 +24,19 @@ export class MealDetailsComponent {
         this.dish_id = params['dish_id'];
       });
 
+      this.getDetails();
+
+    }
+
+    getDetails(){
+      this.isLoading.set(true);
       this.mealService.getDetails(this.dish_id).subscribe({
         next: (res:any)=>{
           this.meal.set(res.data)
-
+          this.isLoading.set(false);
         }
       })
     }
-
-meal = signal<DishDetails| any>({});
 
   goBack() {
     history.back();

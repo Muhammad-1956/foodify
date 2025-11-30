@@ -53,3 +53,9 @@ p {
         font-size: calc(1rem + .3vw);
     }
 }
+@media only screen and (max-width: 470px) {
+  .head .image-container[_ngcontent-ng-c4145380786] .meal-img[_ngcontent-ng-c4145380786]{
+    width: 120px !important;
+    height: 120px !important;
+}
+  }
