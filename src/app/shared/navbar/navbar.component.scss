@@ -1,9 +1,21 @@
 form{
-  width: 54%;
+  width: 48%;
   min-width: 260px;
-  input:focus{
-    outline: none;
-  box-shadow: none;
+  input{
+    &:focus{
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+nav{
+  ul{
+    li{
+      img{
+        width: 45px;
+        height:45px;
+      }
+    }
   }
 }
 .small-box {
@@ -48,3 +60,10 @@ opacity: 0;
   }
 }
 
+@media screen and (min-width:1200px){
+  form{
+  input{
+    width: 90%;
+  }
+}
+}

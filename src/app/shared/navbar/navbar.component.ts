@@ -1,13 +1,17 @@
-import { Component, Output, output } from '@angular/core';
+import { Component, Output, output, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from "@angular/router";
 import { MealService } from '../../features/services/meal.service';
+import { ProfileService } from '../../features/services/profile.service';
+import { User } from '../../features/interfaces/user.interface';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, PopUpComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
+
 })
 export class NavbarComponent {
   activePanel: 'cart' | 'notif' | null = null;
@@ -24,7 +28,7 @@ export class NavbarComponent {
   categoryId: any = '1';
   isDishesRoute = false;
 
-constructor(private api: MealService,private route: ActivatedRoute, private router: Router) {
+constructor(private api: MealService, private profileService: ProfileService, private route: ActivatedRoute, private router: Router) {
   this.route.queryParams.subscribe((params: any) => {
       this.categoryId = params['category_id'];
     });
@@ -34,6 +38,7 @@ ngOnInit() {
   this.loadDishes();
   const currentUrl = this.router.url; // e.g. '/menu/dishes/123'
   this.isDishesRoute = currentUrl.includes('dishes');
+  this.getInfo();
 }
 
 loadDishes(search: string = '') {
@@ -61,4 +66,24 @@ onSearch(event: any) {
   // }) : this.loadDishes(value)
 }
 
-}
+userInfo = signal<User | any>({})
+getInfo() {
+this.profileService.getProfile().subscribe({
+next: (res: any) => {
+this.userInfo.set(res);
+  console.log(this.userInfo())
+    // Populate form
+    // const [day, month, year] = res.birthday?.split('-') || ['', '', ''];
+    // this.personalForm.setValue({
+    //   fullName: res.name || '',
+    //   email: res.email || '',
+    //   phone: res.phone || '',
+    //   birthDay: day,
+    //   birthMonth: month,
+    //   birthYear: year,
+    //   address: res.address || ''
+    // });
+  }
+});
+
+}}

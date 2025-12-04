@@ -1,0 +1,29 @@
+.small-box {
+  position: fixed;
+  top: 70px; // distance from top
+  right: 20px; // distance from right
+  width: 280px;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: none;
+  z-index: 1050;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: translateX(100%);
+  opacity: 0;
+
+  &.show {
+    display: block;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  img {
+    width: 40px;
+  }
+  h5 {
+    font-size: 0.8rem;
+  }
+  small {
+    font-size: 0.7em;
+  }
+}

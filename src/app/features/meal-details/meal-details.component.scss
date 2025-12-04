@@ -44,7 +44,13 @@ p {
     font-size: 0.85rem;
   }
 }
-@media screen and (max-width: 767px){
+@media only screen and (max-width: 470px) {
+.image-container .meal-img {
+  width: 120px !important;
+  height: 120px !important;
+}
+  }
+@media screen and (min-width:471px) and (max-width: 767px){
   .image-container[_ngcontent-ng-c4145380786] .meal-img[_ngcontent-ng-c4145380786] {
     width: 8.625rem;
     height: 8.625rem;
@@ -53,9 +59,3 @@ p {
         font-size: calc(1rem + .3vw);
     }
 }
-@media only screen and (max-width: 470px) {
-  .head .image-container[_ngcontent-ng-c4145380786] .meal-img[_ngcontent-ng-c4145380786]{
-    width: 120px !important;
-    height: 120px !important;
-}
-  }

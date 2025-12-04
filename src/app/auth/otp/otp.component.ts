@@ -64,14 +64,18 @@ export class OtpComponent implements OnInit {
     event.preventDefault();
   }
 }
-
+  // Rest parameters
+  collectOtpDigits(...nums: any){
+    // return nums.reduce((a: any,b: any) => a+b)
+    return nums.join('');
+  }
   onSubmit() {
     if(this.form.valid){
+      // Object destructuring
       const { d1, d2, d3, d4 } = this.form.value;
-      const otp = `${d1 ?? ''}${d2 ?? ''}${d3 ?? ''}${d4 ?? ''}`;
-      console.log('OTP:', otp);
-      console.log('iam here');
+      const otp = this.collectOtpDigits(d1,d2,d3,d4);
       const number = this.number
+
       this.authService.verify(otp, number).subscribe({
         next: (res: any)=>{
           console.log(res)
@@ -82,6 +86,7 @@ export class OtpComponent implements OnInit {
           }
         }
       })
+
       this.form.reset();
     }
   }

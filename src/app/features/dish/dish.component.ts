@@ -21,6 +21,7 @@ export class DishComponent {
   favAPi = []
   isToggle = signal(false);
   updateFav = output();
+  updateCartPopUp = output();
   constructor(
     private router: Router,
     private cartService: CartService,
@@ -58,6 +59,7 @@ export class DishComponent {
     // Add To Cart
     this.cartService.addToCart(dish_id, '1').subscribe({
       next: (res: any) => {
+        this.updateCartPopUp.emit()
         this.toastr.success(res.message);
       },
     });
